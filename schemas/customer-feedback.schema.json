@@ -1,0 +1,35 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "./customer-feedback.schema.json",
+    "title": "Схема события 'Отзыв пользователя'",
+    "description": "Контракт данных для события customer_feedback_created.",
+    "type": "object",
+    "required": ["metadata", "payload"],
+    "properties": {
+      "metadata": {
+        "type": "object",
+        "required": ["event_id", "event_name", "timestamp", "trace_id"],
+        "properties": {
+          "event_id": { "type": "string" },
+          "event_name": { "type": "string" },
+          "timestamp": { "type": "string", "format": "date-time" },
+          "trace_id": { "type": "string" }
+        }
+      },
+      "payload": {
+        "type": "object",
+        "required": ["order_id", "restaurant_id", "courier_id", "rating"],
+        "properties": {
+          "order_id": { "type": "string" },
+          "restaurant_id": { "type": "string" },
+          "courier_id": { "type": "string" },
+          "rating": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          },
+          "comment": { "type": "string" }
+        }
+      }
+    }
+  }
